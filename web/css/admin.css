@@ -1,0 +1,138 @@
+#addresses__map {
+    height: 350px;
+}
+.photosClass {
+	max-width: 50px;
+}
+.navbar-brand {
+    position: relative;
+    display: block;
+    padding: 14px;
+}
+.navbar-fixed-top.navbar>.container {
+	box-shadow: 0px 5px 36px 4px rgba(0, 0, 0, 0.1);
+}
+.wrap > .container {
+    padding: 65px 0px 20px;
+}
+
+.metro .metro__container {
+    display: inline-block;
+}
+ .metro .metro__container .metro__color-wrapper {
+    display: inline-block;
+    width: 0.875rem;
+    height: 1.25rem;
+    text-align: center;
+}
+.metro__name {
+    display: inline-block;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+.metro__additional__info {
+    font-size: 16px;
+    color: #a5a5a5;
+    display: inline-block;
+}
+.metro__color {
+    display: inline-block;
+    background-color: #1bc1f3;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: relative;
+    top: -1px;
+}
+.metro__color-wrapper {
+    display: inline-block;	
+}
+#objects-metro {
+	display: none;
+}
+.typeChooser {
+  background: white;
+  background: #fff;
+  justify-content: center;
+  display: flex;
+  height: 30px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8c8c8c;
+  transition: 1s all;
+  cursor: pointer;
+}
+/*.typeChooser.active{
+    border: 4px solid #58c5d0;
+  color: #111;
+}*/
+[for="objects-saletype"] {
+  width: 160px;
+}
+#objects-saletype:not(:checked)+.adminObject>.typeChooser:nth-child(1) {
+  background: #2c949e;
+  color: #fff;
+  border-radius: 3px 0 0 3px;
+}
+#objects-saletype:checked+.adminObject>.typeChooser:nth-child(2) {
+  background: #2c949e;
+  color: #fff;
+  border-radius: 0 3px 3px 0;
+}
+#objects-saletype {
+  display: none;
+}
+.form-group {
+  margin-bottom: 0;
+}
+.common-content label.adminObject {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.corob {
+  box-shadow: 0px 5px 36px 4px rgba(0, 0, 0, 0.1);
+}
+
+.metroStation .color {
+    display: inline-block;
+    background-color: #1bc1f3;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 10px;
+    top: -1px;
+}
+.colors {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+[name="ObjectsSearch[id]"] {
+  width: 45px;
+}
+
+.corob label {
+  /*position: absolute;*/
+/*  color: #b3b3b3;
+  top: -10px;
+  left: 12px;
+  font-weight: 500;
+  background: #fff;
+  padding: 0 6px;*/
+  font-weight: 500;
+}
+.corob {
+  width: 360px;
+}
+.corob [type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
