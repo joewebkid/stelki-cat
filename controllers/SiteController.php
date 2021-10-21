@@ -7,7 +7,6 @@ use app\models\ChangePhones;
 use app\models\Emailhash;
 use app\models\Users;
 use app\models\Resize;
-use app\models\Objects;
 use app\models\Smshash;
 use Yii;
 use yii\filters\AccessControl;
@@ -17,6 +16,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\UploadedFile;
+use app\models\PageContent;
 
 class SiteController extends Controller
 {
@@ -28,22 +28,18 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'add-object'],
+                'only' => ['logout', 'login'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'add-object'],
+                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['add-object'],
+                        'actions' => ['login'],
                         'allow' => false,
-                        'roles' => ['?'],
-                        'denyCallback' => function ($rule, $action) {
-                            Yii::$app->session->setFlash('warning', 'Необходимо авторизоваться');
-                            return $action->controller->redirect(['site/login']);
-                        }
-                    ],
+                        'roles' => ['@'],
+                    ]
                 ],
             ],
             'verbs' => [
@@ -78,99 +74,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new \app\models\ObjectsSearch();
-        $objectsProvider = $searchModel->search(Yii::$app->request->queryParams);
-        // print_r(Yii::$app->request->queryParams);exit;
-        return $this->render('index', compact('searchModel', 'objectsProvider'));
+        $aboutCompanyLeftBlock = PageContent::findOne(1)->value;
+        $aboutCompanyRightBlock = PageContent::findOne(2)->value;
+
+        return $this->render('index', compact(
+            'aboutCompanyLeftBlock',
+            'aboutCompanyRightBlock'
+        ));
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionAddObject()
+    public function actionTechnology()
     {
-        $model = new Objects();
-
-        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
-
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-
-            if ($model->upload()) {
-
-                $images = [];
-
-                foreach ($model->imageFiles as $file) {
-                    $resize = \Yii::$app->Resize->load(Yii::getAlias('@webroot') .'/uploads/'. $file->name)
-                        ->resizeAuto(1920)
-                        ->setRandName()
-                        ->save(false);
-                    $images[] = $resize;
-                    unlink(Yii::getAlias('@webroot') .'/uploads/'. $file->name);
-
-                    $model->imageFiles = '';
-                    $model->photos = json_encode($images);
-                }
-
-                if ($model->save()) {
-                    return $this->redirect(['/catalog/view', 'id' => $model->id]);
-                } else {
-                    foreach ($model->getErrors() as $key => $value) {
-                        \Yii::$app->session->setFlash('error', $value);
-                    }
-                }
-
-            }
-        }
-
-        return $this->render('add_objects', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionUpdateObject($id)
-    {
-        $model = Objects::findOne($id);
-
-        if (Yii::$app->request->isPost && $model->load(Yii::$app->request->post())) {
-            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
-
-            if ($model->upload()) {
-
-                $model->removeOldPhotos();
-
-                $images = [];
-                foreach ($model->imageFiles as $file) {
-                    $resize = \Yii::$app->Resize->load(Yii::getAlias('@webroot') .'/uploads/'. $file->name)
-                        ->resizeAuto(1920)
-                        ->setRandName()
-                        ->save(false);
-                    $images[] = $resize;
-                    unlink(Yii::getAlias('@webroot') .'/uploads/'. $file->name);
-                }
-
-                $model->imageFiles = '';
-                $model->photos = json_encode($images);
-                if ($model->save()) {
-                    return $this->redirect(['/catalog/view', 'id' => $model->id]);
-                } else {
-                    foreach ($model->getErrors() as $key => $value) {
-                        \Yii::$app->session->setFlash('error', $value);
-                    }
-                }
-
-            }
-        }
-
-        return $this->render('add_objects', [
-            'model' => $model,
-        ]);
+        return $this->render('technology', []);
     }
 
     /**
