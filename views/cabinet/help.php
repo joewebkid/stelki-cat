@@ -11,6 +11,7 @@ use yii\bootstrap\ActiveForm;
 // $this->title = 'Мои сообщения';
 // $this->params['breadcrumbs'][] = $this->title;
 LoginAsset::register($this);
+$helpEmail = Yii::$app->params['helpEmail'];
 ?>
 <div class="container">
 <div class="site-login ">
@@ -19,7 +20,7 @@ LoginAsset::register($this);
 
     <div class="help-messages">
         <br/>
-        Вы можете написать на почту <a href="mailto:mashino-mesta.ru">help@mashino-mesta.ru</a>.
+        Вы можете написать на почту <a href="mailto:<?= $helpEmail ?>"><?= $helpEmail ?></a>.
         <br/>
         Либо написать сообщение здесь.
 

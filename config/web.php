@@ -76,12 +76,11 @@ $config = [
             'rules' => [
                 'admin' => 'admin/index/index',
                 'admin/<controller:[a-zA-Z\-]+>/<action:[a-zA-Z\-]+>' => 'admin/<controller>/<action>',
-                'cabinet/index' => 'cabinet/index?per-page=3',
-                'cabinet' => 'cabinet/index',
-                'catalog/view/<id:\d+>' => 'catalog/view',
+                // 'cabinet/index' => 'cabinet/index?per-page=3',
+                // 'cabinet' => 'cabinet/index',
                 'object/<action:[a-zA-Z\-]+>' => 'site/<action>-object',
                 'object/<action:[a-zA-Z\-]+>/<id:\d+>' => 'site/<action>-object',
-                'page/<url:[a-zA-Z0-9-]+>' => 'page/index',
+                'technology' => 'site/technology'
             ],
         ],
     ],

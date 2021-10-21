@@ -5,9 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\ChangeEmails;
 use app\models\ChangeEmailsSearch;
-use app\models\Objects;
 use app\models\Users;
-use app\models\ResidentialComplexes;
 use app\models\Districts;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -30,83 +28,6 @@ class ApiController extends Controller
                 'class' => \yii\filters\Cors::className(),
             ],
         ];
-    }
-
-//    public function beforeAction($action)
-//    {
-//        $this->enableCsrfValidation = false;
-//    }
-
-    public function actionAddCianObject()
-    {
-        \Yii::$app->controller->enableCsrfValidation = false;
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-        $request = Yii::$app->request;
-        $params = $request->post();
-
-        if (!empty($params['jk']) && $params['jk'] != 'false') {
-            $complexId = ResidentialComplexes::find()->where(['=', 'name', $params['jk']])->one();
-
-            if (empty($complexId->id)) {
-                $cm = new ResidentialComplexes();
-                $cm->name = $params['jk'];
-                $cm->save();
-                $complexId = $cm->id;
-            } else {
-                $complexId = $complexId->id;
-            }
-        } else {
-            $complexId = 0;
-        }
-
-        $raion = $this->getByParamName($params['address'], 'raion');
-        if (!empty($raion) && $raion != 'false') {
-            $districtsId = Districts::find()->where(['=', 'name', $raion])->one();
-            if (empty($districtsId->id)) {
-                $cm = new Districts();
-                $cm->name = $raion;
-                $cm->save();
-                $districtsId = $cm->id;
-            } else {
-                $districtsId = $districtsId->id;
-            }
-        } else {
-            $districtsId = 0;
-        }
-
-
-        //this->getByParamName($params['address'], 'location') . ', ' .
-
-        $object = new Objects();
-        $object->coord_lat = $params['coords']['lat'];
-        $object->coord_len = $params['coords']['lng'];
-        $object->address = $this->getByParamName($params['address'], 'street') . ', ' . $this->getByParamName($params['address'], 'house');
-        $object->region = '';
-        $object->name = $params['type_2'] . ' (' . $params['type_1'] . ')';
-        $object->city = $this->getByParamName($params['address'], 'location');
-        $object->district = $districtsId;
-        $object->zone = $this->getByParamName($params['address'], 'okrug');
-        $object->photos = $this->getPhotos($params['photos']);
-        $object->metro = '';
-        $object->description = $params['description'];
-        $object->residential_сomplex_id = $complexId;
-        $object->area = $params['totalArea'];
-        $object->security = 1;
-        $object->price = $params['priceTotalRur'];
-        $object->owner = 0;
-        $object->status = '';
-        if ($params['dealType'] == 'sale') {
-            $object->saleType = 0;
-        } else {
-            $object->saleType = 1;
-        }
-        $object->type = 0;
-        $object->user_id = $this->getOrSetUserId($params['phone']);
-
-        $object->save();
-
-        return [0 => $object->getErrors()];
     }
 
     public function getByParamName($array, $paramName)
@@ -152,7 +73,7 @@ class ApiController extends Controller
         } else {
             $user = new Users();
             $user->phone = $phone;
-            $user->email = $phone . '@mashino-mesta.ru';
+            $user->email = $phone . '@future-step.ru';
             $user->pwhash = '$2y$13$/dw98JdrKk8lXz72yhw/NeTy12iSkKDe3cZWAA1sGGxEBItg8iyOC';
             $user->login = $phone;
             $user->save();

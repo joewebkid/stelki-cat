@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@mashino-mesta.ru',
-    'helpEmail' => 'help@mashino-mesta.ru',
-    'no-replyEmail' => 'no-reply@mashino-mesta.ru',
-    'domain' => 'http://mashino-mesta.ru',
-    'siteName' => 'Mashino-mesta'
+    'adminEmail' => 'admin@future-step.ru',
+    'helpEmail' => 'help@future-step.ru',
+    'no-replyEmail' => 'no-reply@future-step.ru',
+    'domain' => 'http://future-step.ru',
+    'siteName' => 'Future-step'
 ];

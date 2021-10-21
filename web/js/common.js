@@ -47,33 +47,6 @@ if ($('body').has('.filter')) {
     $('.field-objectssearch-district .sel__block input[type="checkbox"]').change()
     $('.field-objectssearch-type .sel__block input[type="checkbox"]').change()
 }
-$('body').on('click', '.last-apartments__card-like', function (e) {
-    parrent = $(this).parent(".last-apartments__card");
-    if (parrent.length == 0)
-        parrent = $(this).parents(".item__container");
-
-    id = parrent.data("id");
-    name = parrent.data("name");
-    parrent.toggleClass("liked");
-    typeClass = parrent.hasClass("liked") ? 'success' : 'error';
-    textClass = parrent.hasClass("liked") ? 'Объект ' + name + ' добавлен в избранное' : 'Объект ' + name + ' удален из избранного'
-    $.get(
-        '/catalog/add-favorite',
-        {id: id},
-        function (response) {
-            console.log(response)
-        }
-    );
-
-    var noty = new Noty({
-        type: typeClass,
-        text: textClass,
-        timeout: 1000
-    }).show();
-    console.log(noty);
-
-
-});
 
 $('.adminObject').on('click', (e) => {
 

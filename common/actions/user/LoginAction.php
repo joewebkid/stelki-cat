@@ -4,7 +4,6 @@ namespace app\common\actions\user;
 use yii\base\DynamicModel;
 use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
-use app\modules\investor\models\Wallet;
 
 class LoginAction extends UserAction
 {
@@ -60,19 +59,11 @@ class LoginAction extends UserAction
 //                \Yii::$app->session->remove('language');
                 \Yii::$app->user->login($this->identity, $model->rememberMe ? 3600 * 24 * 30 : 60 * 15);
 
-                if (\Yii::$app->user->identityCookie['name'] == '_investor') {
-                    if (!Wallet::findOne(['investor_id' => \Yii::$app->user->id, 'type' => Wallet::TYPE_XEM])) {
-                        \Yii::$app->session['emptyNem'] = true;
-                    } else {
-                        \Yii::$app->session['emptyNem'] = false;
-                    }
-                }
-
                 // Notification::info(\Yii::t('app', "Welcome back!"), 1500);
 
                 \Yii::$app->session->set('language', $oldLang);
 
-                return $this->controller->redirect(\Yii::$app->user->getReturnUrl());
+                return $this->controller->redirect($this->controller->module->defaultRoute);
             } catch (\Throwable $e) {
                  \Yii::$app->getSession()->setFlash('error', $e->getMessage());
             }

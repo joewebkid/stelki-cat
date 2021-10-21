@@ -3,10 +3,8 @@
 namespace app\controllers;
 
 use app\models\Emailhash;
-use app\models\Messages;
 use app\models\HelpForm;
 use app\models\Users;
-use app\models\Objects;
 use app\models\Smshash;
 use app\models\ChangePhones;
 use app\models\ChangeEmails;
@@ -28,11 +26,11 @@ class CabinetController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'profile-edit', 'messages', 'clear-change-phone', 'clear-change-email'],
+                // 'only' => ['index', 'profile-edit', 'clear-change-phone', 'clear-change-email'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'profile-edit', 'messages', 'clear-change-phone', 'clear-change-email'],
-                        'allow' => true,
+                        // 'actions' => ['index', 'profile-edit', 'clear-change-phone', 'clear-change-email'],
+                        'allow' => false,
                         'roles' => ['@'],
                         'denyCallback' => function ($rule, $action) {
                             Yii::$app->session->setFlash('warning', 'Необходимо авторизоваться');
@@ -69,16 +67,7 @@ class CabinetController extends Controller
     {
         $user = Users::findOne(Yii::$app->user->getId());
 
-        $searchModel = new \app\models\ObjectsSearch();
-        $objectsProvider = $searchModel->search([
-            'ObjectsSearch' => [
-                'user_id' => Yii::$app->user->id,
-            ]
-        ]);
-        return $this->render('index', compact(
-            'user',
-            'objectsProvider'
-        ));
+        return $this->render('index', compact('user'));
     }
 
     public function actionClearChangeEmail()
@@ -247,59 +236,6 @@ class CabinetController extends Controller
         ]);
     }
 
-    public function actionMessages()
-    {
-        $user_id = Yii::$app->user->id;
-
-        $model = new Messages();
-        $model->scenario = Messages::SCENARIO_NEW;
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->user_id_from = $user_id;
-            $model->type = Messages::TYPE_NOT_READ;
-
-            if (!$model->save()) {
-                foreach ($model->getErrors() as $key => $value) {
-                    Yii::$app->session->setFlash('error', $value);
-                }
-            } else {
-                Yii::$app->session->setFlash('success', 'Сообщение успешно отправлено');
-                return $this->refresh();
-            }
-
-        }
-
-        $chats = Messages::findAllChatsWithUser($user_id);
-
-        $chat_id = Yii::$app->request->get('chat');
-        if (!$chat_id) {
-            $chatsIdFind = Messages::find()->where(['user_id_to' => $user_id])->one();
-            if ($chatsIdFind) {
-                $chat_id = $chatsIdFind->user_id_from;
-            } else {
-                $chatsIdFind = Messages::find()->where(['user_id_from' => $user_id])->one();
-                if($chatsIdFind){
-                    $chat_id = $chatsIdFind->user_id_to;
-                }
-            }
-        }
-
-        $messages = Messages::messagesWithUsers($user_id, $chat_id);
-
-        $model->text = '';
-
-        if ($chat_id) {
-            Messages::setRead($chat_id, $user_id);
-        }
-
-        return $this->render('messages', [
-            'model' => $model,
-            'chat_id' => $chat_id,
-            'user_id' => $user_id,
-            'chats' => $chats,
-            'messages' => $messages
-        ]);
-    }
-
     public function actionHelp()
     {
 
@@ -316,7 +252,7 @@ class CabinetController extends Controller
             $label = 'Сообщение из раздела "Помощь" на сайте ' . Yii::$app->params['siteName'];
             $text = $model->text .'<br/>'. Yii::$app->params['domain'] . '/admin/users/view?id=' . $user->id;
             Yii::$app->Email->sendToHelp($label, $text, $user->email);
-            Yii::$app->getSession()->setFlash('success', 'Сообщение отправлено, в ближайшее время мы отваетим на Ваш E-mail (' . $user->email . ').');
+            Yii::$app->getSession()->setFlash('success', 'Сообщение отправлено, в ближайшее время мы ответим на Ваш E-mail (' . $user->email . ').');
         }
 
         $model->text = "";

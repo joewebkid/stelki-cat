@@ -39,12 +39,8 @@ AdminAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'ЖК', 'url' => ['/admin/residential-complexes']],
-            ['label' => 'Районы', 'url' => ['/admin/districts']],
-            ['label' => 'Страницы', 'url' => ['/admin/static-pages']],
-            ['label' => 'Объекты', 'url' => ['/admin/objects']],
-            ['label' => 'Пользователи', 'url' => ['/admin/users']],
-            ['label' => 'Сообщения', 'url' => ['/admin/messages']],
+            ['label' => 'Наполнение страниц', 'url' => ['/admin/pages-content']],
+            // ['label' => 'Пользователи', 'url' => ['/admin/users']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

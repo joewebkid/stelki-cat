@@ -25,7 +25,6 @@ class LoginAsset extends AssetBundle
     ];
     public $js = [
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js',
-        'https://api-maps.yandex.ru/2.1/?apikey=6364954d-ce8c-4c70-9f00-e2f737904c40&lang=ru_RU&mode=debug',
         'js/jquery.mask.js',
         'js/login.js',
     ];

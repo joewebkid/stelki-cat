@@ -31,7 +31,6 @@ class AppAsset extends AssetBundle
         'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js',
-        'https://api-maps.yandex.ru/2.1/?apikey=6364954d-ce8c-4c70-9f00-e2f737904c40&lang=ru_RU&mode=debug',
         'js/common.js',
         'js/admin.js',
     ];
