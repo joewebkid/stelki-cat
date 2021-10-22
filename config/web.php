@@ -78,8 +78,6 @@ $config = [
                 'admin/<controller:[a-zA-Z\-]+>/<action:[a-zA-Z\-]+>' => 'admin/<controller>/<action>',
                 // 'cabinet/index' => 'cabinet/index?per-page=3',
                 // 'cabinet' => 'cabinet/index',
-                'object/<action:[a-zA-Z\-]+>' => 'site/<action>-object',
-                'object/<action:[a-zA-Z\-]+>/<id:\d+>' => 'site/<action>-object',
                 'technology' => 'site/technology'
             ],
         ],

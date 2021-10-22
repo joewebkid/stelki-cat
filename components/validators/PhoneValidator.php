@@ -13,8 +13,9 @@ class PhoneValidator extends Validator
 {
     public function validateAttribute($model, $attribute)
     {
-        if (!preg_match('/^\+7\s\([0-9]{3}\)\s[0-9]{3}\-[0-9]{2}\-[0-9]{2}$/', $model->$attribute)) {
-            $this->addError($model, $attribute, 'Attribute '.$attribute.' is not validate.');
+        // Телефон по типу +7(111)111-11-11, без пробелов
+        if (!preg_match('/^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}$/', $model->$attribute)) {
+            $this->addError($model, $attribute, 'Телефон неверно введен');
         }
     }
 }

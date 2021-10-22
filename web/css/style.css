@@ -2151,3 +2151,11 @@
       padding: 0;
     }
   }
+
+  #sign-form-errors {
+    border-style: solid;
+    border-radius: 7px;
+    border-color: #82c340;
+    border-width: 2px;
+    padding: 10px 0px 0px 10px;
+  }

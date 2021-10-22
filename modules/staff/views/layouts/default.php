@@ -39,6 +39,7 @@ AdminAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'Заявки', 'url' => ['/admin/bids']],
             ['label' => 'Наполнение страниц', 'url' => ['/admin/pages-content']],
             // ['label' => 'Пользователи', 'url' => ['/admin/users']],
             Yii::$app->user->isGuest ? (

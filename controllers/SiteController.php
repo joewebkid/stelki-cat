@@ -8,6 +8,8 @@ use app\models\Emailhash;
 use app\models\Users;
 use app\models\Resize;
 use app\models\Smshash;
+use app\models\Bids;
+use app\models\BidForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -76,10 +78,25 @@ class SiteController extends Controller
     {
         $aboutCompanyLeftBlock = PageContent::findOne(1)->value;
         $aboutCompanyRightBlock = PageContent::findOne(2)->value;
+        $signFormModel = new BidForm();
 
+        if ($signFormModel->load(Yii::$app->request->post())) {
+            if ($signFormModel->validate()) {
+                $bid = new Bids();
+                $bid->name = $signFormModel->name;
+                $bid->phone = str_replace(['(', ')', '-'], '', $signFormModel->phone);
+                $bid->email = $signFormModel->email;
+                $bid->save();
+                $res = Yii::$app->Email->send($signFormModel->email, 'Запись на сканирование', 'Вы успешно записались на сканирование', ChangeEmails::TYPE_NO_REPLY);
+
+                $this->redirect('/');
+            }
+        }
+        
         return $this->render('index', compact(
             'aboutCompanyLeftBlock',
-            'aboutCompanyRightBlock'
+            'aboutCompanyRightBlock',
+            'signFormModel'
         ));
     }
 

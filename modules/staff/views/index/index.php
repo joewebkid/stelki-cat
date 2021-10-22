@@ -1,1 +1,1 @@
-some text
+<?= $this->render('/bids/index', compact('dataProvider')); ?>

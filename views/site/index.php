@@ -101,8 +101,8 @@ $this->registerJsFile(
             <p class="text">стоп прямо сейчас и получите скидку</p>
             <strong class="promo__discount">-25%</strong>
             </div>
-            <div class="promo__block info-block">
-            	<?= $this->render('sign_form', [], true) ?>
+            <div class="promo__block info-block" id="sign-block">
+            	<?= $this->render('sign_form', ['model' => $signFormModel], true) ?>
 			</div>
         </div>
     </section>
