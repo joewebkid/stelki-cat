@@ -87,7 +87,13 @@ class SiteController extends Controller
                 $bid->phone = str_replace(['(', ')', '-'], '', $signFormModel->phone);
                 $bid->email = $signFormModel->email;
                 $bid->save();
-                $res = Yii::$app->Email->send($signFormModel->email, 'Запись на сканирование', 'Вы успешно записались на сканирование', ChangeEmails::TYPE_NO_REPLY);
+
+                Yii::$app->mailer->compose()
+                    ->setTo($signFormModel->email)
+                    ->setFrom([Yii::$app->params['no-replyEmail'] => Yii::$app->params['siteName']])
+                    ->setSubject('Запись на сканирование')
+                    ->setHtmlBody('<p>Вы успешно записались на сканирование</p>')
+                ->send();
 
                 $this->redirect('/');
             }
