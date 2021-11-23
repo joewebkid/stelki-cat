@@ -3,6 +3,7 @@
 use \yii\web\View;
 
 $form = yii\widgets\ActiveForm::begin([
+    'action' => '/',
     'method' => 'post',
     'enableClientValidation' => false,
     'enableAjaxValidation' => false,

@@ -1,7 +1,6 @@
 <?
 $this->title = 'Технологии';
 $this->registerJsFile('@web/js/processAnimate.js');
-$this->registerJsFile('@web/js/burgerShow.js');
 ?>
 <main class="technology">
     <div class="process-wrap">

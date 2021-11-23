@@ -106,6 +106,24 @@ class SiteController extends Controller
         ));
     }
 
+    public function getHeaderHtml()
+    {
+        return $this->renderPartial('@app/views/layouts/header', [], true);
+    }
+
+    public function actionCatalog()
+    {
+        $aboutCompanyLeftBlock = PageContent::findOne(1)->value;
+        $aboutCompanyRightBlock = PageContent::findOne(2)->value;
+        $signFormModel = new BidForm();
+
+        return $this->render('catalog', compact(
+            'aboutCompanyLeftBlock',
+            'aboutCompanyRightBlock',
+            'signFormModel'
+        ));
+    }
+
     public function actionTechnology()
     {
         return $this->render('technology', []);

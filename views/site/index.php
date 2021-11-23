@@ -1,9 +1,6 @@
 <?php
 $this->title = 'Главная';
 $this->registerJsFile(
-    '@web/js/burgerShow.js'
-);
-$this->registerJsFile(
     'https://unpkg.com/imask'
 );
 $this->registerJsFile(
