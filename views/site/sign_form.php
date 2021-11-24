@@ -26,15 +26,31 @@ if (!empty($model->getErrors())) {
     );
 }
 
+$activeInputName = (mb_strlen($model->name) > 0) ? ' active' : '';
+$activeInputPhone = (mb_strlen($model->phone) > 0) ? ' active' : '';
+$activeInputEmail = (mb_strlen($model->email) > 0) ? ' active' : '';
+
 ?>
-<?= $form->field($model, 'name', ['template' => '{input}{label}'])->textInput(['class' => 'form-item__input', 'type' => 'text'])
-    ->label('Ваше имя', ['class' => 'form-label']) 
+<?= $form->field($model, 'name', ['template' => '{input}{label}'])->textInput(
+    [
+        'class' => 'form-item__input' . $activeInputName, 
+        'type' => 'text'
+    ])
+    ->label('Ваше имя', ['class' => 'form-label'])
 ?>
-<?= $form->field($model, 'phone', ['template' => '{input}{label}'])->textInput(['class' => 'form-item__input tel', 'type' => 'phone'])
-    ->label('Ваш телефон', ['class' => 'form-label']) 
+<?= $form->field($model, 'phone', ['template' => '{input}{label}'])->textInput(
+    [
+        'class' => 'form-item__input tel' . $activeInputPhone, 
+        'type' => 'phone'
+    ])
+    ->label('Ваш телефон', ['class' => 'form-label'])
 ?>
-<?= $form->field($model, 'email', ['template' => '{input}{label}'])->textInput(['class' => 'form-item__input', 'type' => 'email'])
-    ->label('Ваша электронная почта', ['class' => 'form-label']) 
+<?= $form->field($model, 'email', ['template' => '{input}{label}'])->textInput(
+    [
+        'class' => 'form-item__input' . $activeInputEmail, 
+        'type' => 'email'
+    ])
+    ->label('Ваша электронная почта', ['class' => 'form-label'])
 ?>
 
 <?= $form->errorSummary($model, ['header' => 'Пожалуйста, исправьте следующие ошибки:', 'id' => 'sign-form-errors']) ?>
