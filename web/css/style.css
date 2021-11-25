@@ -1,22 +1,22 @@
 @font-face {
   font-family: Inter;
-  src: url(../fonts/Inter-Regular.woff2);
+  src: url(../css/fonts/Inter-Regular.woff2);
 }
 @font-face {
   font-family: InterBold;
-  src: url(../fonts/Inter-ExtraBold.woff2);
+  src: url(../css/fonts/Inter-ExtraBold.woff2);
 }
 @font-face {
   font-family: InterMedium;
-  src: url(../fonts/Inter-Medium.woff2);
+  src: url(../css/fonts/Inter-Medium.woff2);
 }
 @font-face {
   font-family: Roboto;
-  src: url(../fonts/Roboto-Regular.woff2);
+  src: url(../css/fonts/Roboto-Regular.woff2);
 }
 @font-face {
   font-family: Montserrat;
-  src: url(../fonts/Montserrat-Bold.woff2);
+  src: url(../css/fonts/Montserrat-Bold.woff2);
 } /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -243,7 +243,7 @@ h2.title {
   content: "";
   width: 5px;
   height: 10px;
-  background-image: url(../../img/icon/arrow.png);
+  background-image: url(../../images/icon/arrow.png);
   background-size: 100% 100%;
   position: absolute;
   top: 23px;
@@ -449,7 +449,7 @@ h2.title {
   position: absolute;
   top: 0;
   right: 0;
-  background: url(../img/illustrations/Rectangle20.png), url(../img/illustrations/image45.png);
+  background: url(../images/illustrations/Rectangle20.png), url(../images/illustrations/image45.png);
   background-blend-mode: multiply;
   background-size: cover;
   -webkit-clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
@@ -553,7 +553,7 @@ h2.title {
   font-family: InterBold;
 }
 .main_content {
-  background: url(../img/illustrations/background_relief.png), url(../img/illustrations/Rectangle20.png);
+  background: url(../images/illustrations/background_relief.png), url(../images/illustrations/Rectangle20.png);
   min-height: 300px;
 }
 .main_content__header.title {
@@ -929,7 +929,7 @@ h2.title {
   background-color: #e8e8e8;
   border-radius: 50%;
   background-size: 20%;
-  background-image: url(../img/icon/black-arrow-left.png);
+  background-image: url(../images/icon/black-arrow-left.png);
   position: relative;
 }
 .modal .carousel-control-next-icon {
@@ -937,7 +937,7 @@ h2.title {
 }
 .modal .carousel-control-prev-icon {
   right: 40px;
-  background-image: url(../img/icon/black-arrow-right.png);
+  background-image: url(../images/icon/black-arrow-right.png);
 }
 .modal .carousel-control-next:focus,
 .modal .carousel-control-next:hover,
