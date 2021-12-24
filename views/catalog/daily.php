@@ -14,9 +14,7 @@ $this->registerJsFile('https://unpkg.com/imask');
                 <p class="text catalog__text text_emphasys"><?= $block1[1] ?></p>
             </div>
             <div class="info-block">
-                <p class="text catalog__text">
-                <?= $block2 ?>
-                </p>
+                <p class="text catalog__text"><?= $block2 ?></p>
             </div>
         </div>
     </section>
@@ -28,12 +26,8 @@ $this->registerJsFile('https://unpkg.com/imask');
             <div class=first-column>
                 <div class="catalog_block_item technology__process-block horizontal-block">
                     <div class="text-column">
-                        <h3 class="title">
-                            Для профилактики развития заболеваний опорно-двигательного аппарата
-                        </h3>
-                        <p class="text">
-                            Повышенные нагрузки могут сопровождаться развитием плоскостопия, причиной множества заболеваний стоп, коленных и тазобедренных суставов
-                        </p>
+                        <h3 class="title"><?= $block4[0] ?></h3>
+                        <p class="text"><?= $block4[1] ?></p>
                         <button type="submit" class="btn">Заказать</button> <span class="price">от 10 900р.</span>
                     </div>
                     <div class="image_container">
@@ -45,10 +39,8 @@ $this->registerJsFile('https://unpkg.com/imask');
                 </div>
                 <div class="catalog_block_item technology__process-block horizontal-block">
                     <div class="text-column">
-                        <h3 class="title">Вальгусная деформация</h3>
-                            <p class="text">
-                                Пяточная шпора в 90 % случаев развивается на фоне плоскостопия. Ортезирование стоп индивидуальными стельками играет важную роль для достижения положительного результата лечения
-                            </p>
+                        <h3 class="title"><?= $block5[0] ?></h3>
+                            <p class="text"><?= $block5[1] ?></p>
                             <button type="submit" class="btn">Заказать</button> <span class="price">от 10 900р.</span>
                     </div>
                     <div class="image_container">
@@ -60,8 +52,8 @@ $this->registerJsFile('https://unpkg.com/imask');
                 </div>
                 <div class="catalog_block_item technology__process-block horizontal-block">
                     <div class="text-column">
-                        <h3 class="title">Для беременных женщин</h3>
-                        <p class="text">В период беременности увеличивается нагрузка на опорно-двигательный аппарат</p>
+                        <h3 class="title"><?= $block6[0] ?></h3>
+                        <p class="text"><?= $block1[1] ?></p>
                         <button type="submit" class="btn">Заказать</button> <span class="price">от 10 900р.</span>
                     </div>
                     <div class="image_container">
@@ -81,8 +73,8 @@ $this->registerJsFile('https://unpkg.com/imask');
                         </picture>
                     </div>
                     <div class="text-column">
-                        <h3 class="title">Неврома Мортона</h3>
-                        <p class="text">Использование ортопедических стелек, изготовленных по индивидуальному заказу, повышает эффективность консервативного лечения невромы Мортона</p>
+                        <h3 class="title"><?= $block7[0] ?></h3>
+                        <p class="text"><?= $block7[1] ?></p>
                         <button type="submit" class="btn">Заказать</button> <span class="price">от 10 900р.</span>
                     </div>
                 </div>
@@ -94,65 +86,10 @@ $this->registerJsFile('https://unpkg.com/imask');
                                 <img src="/images/illustrations/dailycat4.png" class="tech_ill" alt="" />
                             </picture>
                         </div>
-                        <h3 class="title">Пяточная шпора</h3>
-                        <p class="text">
-                            Пяточная шпора в 90 % случаев развивается на фоне плоскостопия. Ортезирование стоп индивидуальными стельками играет важную роль для достижения положительного результата лечения
-                        </p>
+                        <h3 class="title"><?= $block8[0] ?></h3>
+                        <p class="text"><?= $block8[1] ?></p>
                         <button type="submit" class="btn">Заказать</button> <span class="price">от 10 900р.</span>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="catalog_daily__catalog_block horizontal">
-            <div class="catalog_block_item technology__process-block horizontal-block">
-                <div class="text-column">
-                    <h3 class="title">
-                        Для профилактики развития заболеваний опорно-двигательного аппарата
-                    </h3>
-                    <p class="text">
-                        Повышенные нагрузки могут сопровождаться развитием плоскостопия, причиной множества заболеваний стоп, коленных и тазобедренных суставов
-                    </p>
-                    <button type="submit" class="btn">Заказать</button>
-                    <span class="price">от 10 900р.</span>
-                </div>
-                <div class="image_container">
-                    <picture>
-                        <source srcset="/images/illustrations/dailycat1.webp" type="image/webp">
-                        <img src="/images/illustrations/dailycat1.png" class="tech_ill" alt=""/>
-                    </picture>
-                </div>
-            </div>
-            <div class="catalog_block_item technology__process-block horizontal-block">
-                <div class="text-column">
-                    <h3 class="title">Вальгусная деформация</h3>
-                    <p class="text">Пяточная шпора в 90 % случаев развивается на фоне плоскостопия.
-                        Ортезирование стоп индивидуальными стельками играет важную роль для достижения
-                        положительного результата лечения
-                    </p>
-                    <button type="submit" class="btn">Заказать</button>
-                    <span class="price">от 10 900р.</span>
-                </div>
-                <div class="image_container">
-                    <picture>
-                        <source srcset="/images/illustrations/dailycat3.webp" type="image/webp">
-                        <img src="/images/illustrations/dailycat3.png" class="tech_ill" alt=""/>
-                    </picture>
-                </div>
-            </div>
-            <div class="catalog_block_item technology__process-block horizontal-block">
-                <div class="text-column">
-                    <h3 class="title">Для беременных женщин</h3>
-                    <p class="text">
-                        В период беременности увеличивается нагрузка на опорно-двигательный аппарат
-                    </p>
-                    <button type="submit" class="btn">Заказать</button>
-                    <span class="price">от 10 900р.</span>
-                </div>
-                <div class="image_container">
-                    <picture>
-                        <source srcset="/images/illustrations/dailycat5.webp" type="image/webp">
-                        <img src="/images/illustrations/dailycat5.png" class="tech_ill" alt=""/>
-                    </picture>
                 </div>
             </div>
         </div>
