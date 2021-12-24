@@ -1,7 +1,8 @@
 <?php
 
 use \app\models\PageContent;
-$phone = PageContent::findOne(3)->value;
+$phone = PageContent::findOne(2)->value;
+$email = PageContent::findOne(3)->value;
 ?>
 <footer class="footer">
     <div class="footer__content">
@@ -38,6 +39,7 @@ $phone = PageContent::findOne(3)->value;
                         <h4 class="phone-number title"><?= $phone ?></h4>
                     </div>
                     <div class="contacts__adress">Москва, Волочаевская ул. 45</div>
+                    <div class="contacts__email"><?= $email ?></div>
                 </div>
             </div>
         </div>

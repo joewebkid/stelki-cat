@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'adminEmail' => 'admin@future-step.ru',
-    'helpEmail' => 'help@future-step.ru',
-    'no-replyEmail' => 'no-reply@future-step.ru',
-    'domain' => 'http://future-step.ru',
-    'siteName' => 'Future-step'
+    'adminEmail' => 'info@stepfuture.ru',
+    'helpEmail' => 'info@stepfuture.ru',
+    'no-replyEmail' => 'info@stepfuture.ru',
+    'domain' => 'http://stepfuture.ru',
+    'siteName' => 'stepfuture'
 ];

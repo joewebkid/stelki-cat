@@ -8,25 +8,13 @@ $this->registerJsFile('https://unpkg.com/imask');
 ?>
 <main class=" catalog">
     <section class="catalog__intro">
-        <div class="catalog__information info-block__container info _container">
-            <div class="info-block">
-                <h1 class="section__header title cat-title">Каталог</h1>
-                <p class="text catalog__text text_emphasys">
-                    <?= $aboutCompanyLeftBlock ?>
-                </p>
-            </div>
-            <div class="info-block">
-                <p class="text catalog__text">
-                    <?= $aboutCompanyRightBlock ?>
-                </p>
-            </div>
-        </div>
-    </section>
-    <section class="_container catalog__sections">
+        <section class="_container catalog__sections">
         <div class="catalog__information info-block__container info">
             <div class="info-block">
-                <a data-bs-toggle="modal" data-bs-target="#dailyModal">
-                    <div class="image_container">
+                <h2 class="title cat-title">Здоровье и комфорт в каждом шаге!</h2>
+                <p class="text catalog__text">В зависимости от рецепта и клинической картины наши стельки адаптируются к вашим потребностям.</p>
+                <a href="daily_insole.html">
+                    <div class="image_container daily_container">
                         <picture>
                             <source srcset="/images/illustrations/daily_example.webp" type="image/webp">
                             <img src="/images/illustrations/daily_example.png" class="cat_ill" alt="" />
@@ -48,15 +36,15 @@ $this->registerJsFile('https://unpkg.com/imask');
                         </svg>
                     </h4>
                 </a>
-                <a class="desctop-only" data-bs-toggle="modal" data-bs-target="#diabetModal">
+                <a href="children_insole.html">
                     <div class="image_container">
                         <picture>
-                            <source srcset="/images/illustrations/diabetics_example.webp" type="image/webp">
-                            <img src="/images/illustrations/diabetics_example.png" class="cat_ill" alt="" />
+                            <source srcset="/images/illustrations/babies_foot.webp" type="image/webp">
+                            <img src="/images/illustrations/babies_foot.png" class="cat_ill" alt="" />
                         </picture>
                     </div>
                     <h4 class="catalog-heading">
-                        Стельки для диабетиков
+                        Детские стельки
                         <svg
                             width="88"
                             height="24"
@@ -73,7 +61,7 @@ $this->registerJsFile('https://unpkg.com/imask');
                 </a>
             </div>
             <div class="info-block">
-                <a data-bs-toggle="modal" data-bs-target="#sportModal">
+                <a href="sport_insole.html">
                     <div class="image_container sport_container">
                         <picture>
                             <source srcset="/images/illustrations/sport_example.webp" type="image/webp">
@@ -96,15 +84,15 @@ $this->registerJsFile('https://unpkg.com/imask');
                         </svg>
                     </h4>
                 </a>
-                <a class="mobile-only" data-bs-toggle="modal" data-bs-target="#diabetModal">
+                <a href="diabetics_insole.html">
                     <div class="image_container">
                         <picture>
-                            <source srcset="/images/illustrations/diabetics_example.webp" type="image/webp">
-                            <img src="/images/illustrations/diabetics_example.png" class="cat_ill" alt="" />
+                            <source srcset="/images/illustrations/diabetics_insole.webp" type="image/webp">
+                            <img src="/images/illustrations/diabetics_insole.png" class="cat_ill" alt="" />
                         </picture>
                     </div>
                     <h4 class="catalog-heading">
-                        Стельки для диабетиков
+                        Диабетические стельки
                         <svg
                             width="88"
                             height="24"
@@ -120,7 +108,7 @@ $this->registerJsFile('https://unpkg.com/imask');
                     </h4>
                 </a>
             </div>
-        </div>
+        </section>
     </section>
 </main>
-<?= $this->render('catalog_modals', []) ?>
+<?//= $this->render('catalog_modals', []) ?>

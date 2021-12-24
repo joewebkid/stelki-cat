@@ -76,8 +76,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $aboutCompanyLeftBlock = PageContent::findOne(1)->value;
-        $aboutCompanyRightBlock = PageContent::findOne(2)->value;
+        $firstBlock = PageContent::findOne(1)->value;
+        $explodedFirstBlockString = explode('/', $firstBlock);
+        $firstBlock = [
+            $explodedFirstBlockString[0], 
+            ((count($explodedFirstBlockString) > 1) ? $explodedFirstBlockString[1] : '')
+        ];
         $signFormModel = new BidForm();
 
         if ($signFormModel->load(Yii::$app->request->post())) {
@@ -100,8 +104,7 @@ class SiteController extends Controller
         }
         
         return $this->render('index', compact(
-            'aboutCompanyLeftBlock',
-            'aboutCompanyRightBlock',
+            'firstBlock',
             'signFormModel'
         ));
     }
@@ -109,19 +112,6 @@ class SiteController extends Controller
     public function getHeaderHtml()
     {
         return $this->renderPartial('@app/views/layouts/header', [], true);
-    }
-
-    public function actionCatalog()
-    {
-        $aboutCompanyLeftBlock = PageContent::findOne(1)->value;
-        $aboutCompanyRightBlock = PageContent::findOne(2)->value;
-        $signFormModel = new BidForm();
-
-        return $this->render('catalog', compact(
-            'aboutCompanyLeftBlock',
-            'aboutCompanyRightBlock',
-            'signFormModel'
-        ));
     }
 
     public function actionTechnology()
